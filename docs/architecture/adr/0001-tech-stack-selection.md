@@ -1,16 +1,27 @@
-# ADR-0001: [ชื่อเรื่องการตัดสินใจ]
-* **สถานะ (Status):** [Proposed | Accepted | Superseded]
-* **ผู้บันทึก (Author):** [ชื่อนักศึกษา/ทีม]
-* **วันที่ (Date):** 2026-06-03
+# ADR-001: Use RESTful APIs for Internal Service Communication
 
-## 1. บริบท (Context)
-[อธิบายปัญหา ข้อกำหนด และความท้าทายหน้างานที่กำลังเผชิญ เช่น: "ระบบ GeoAI ของเราจำเป็นต้องดึงข้อมูลภาพถ่ายดาวเทียมปริมาณมากมาประมวลผลเรียลไทม์ แต่ API ภายนอกมีความหน่วง (Latency) สูงมาก ทำให้หน้าเว็บโหลดช้า"]
+**Status:** Accepted
 
-## 2. การตัดสินใจ (Decision)
-[ระบุสิ่งที่ทีมตัดสินใจเลือกอย่างชัดเจน เช่น: "เราตัดสินใจใช้ Redis Cache เพื่อเก็บข้อมูลผลลัพธ์ภาพถ่ายดาวเทียมเป็นเวลา 30 นาที แทนการยิงเรียก API ใหม่ทุกครั้ง"]
+**Context:**
+Our system is being designed with a Microservices architecture. We need a standardized, well-understood mechanism for synchronous communication between services. The development team has experience with both RESTful APIs (using HTTP/JSON) and gRPC.
 
-## 3. เหตุผลรองรับ (Rationale)
-[ใส่ตรรกะเชิงวิศวกรรม/ผลวิเคราะห์ Trade-off เช่น: "เพราะเรายอมแลกเรื่องความสดใหม่ของข้อมูลในระดับวินาที (Eventual Consistency) เพื่อให้ได้ความเร็วหน้าเว็บที่ตอบสัญญะผู้ใช้ได้ภายใน 100ms (Performance)"]
+**Decision:**
+We will use RESTful APIs with JSON payloads as the primary mechanism for synchronous, request-response communication between our internal microservices. All services must expose their capabilities through a well-defined OpenAPI (Swagger) specification.
 
-## 4. ผลกระทบและสิ่งที่จะตามมา (Consequences)
-[ระบุผลลัพธ์ทั้งบวกและลบหลังจากนี้ เช่น: "ผลดี: โหลด Server ลดลง หน้าเว็บลื่นขึ้น / ผลเสีย: ทีมต้องเขียน Logic เพิ่มเพื่อจัดการเคสที่ Cache หมดอายุ หรือกรณีที่ข้อมูลดาวเทียมต้นทางมีการอัปเดตฉุกเฉิน"]
+**Consequences:**
+*   **Positive:**
+    *   Leverages existing team skills in HTTP and JSON, reducing the learning curve.
+    *   Easy to debug and test using common tools like Postman, Insomnia, or even a web browser.
+    *   A wide range of libraries and frameworks support REST, making implementation straightforward.
+    *   The OpenAPI specification will serve as a form of "enforceable contract" between services.
+*   **Negative:**
+    *   REST over HTTP/JSON is more verbose and may have slightly higher latency compared to binary protocols like gRPC.
+    *   We lose the benefits of strong typing across service boundaries that gRPC provides.
+    *   We will need to implement our own mechanisms for features like service discovery and client-side load balancing.```
+
+**บทสรุปสำหรับนิสิต:**
+การเป็นสถาปนิกซอฟต์แวร์ไม่ใช่แค่การเลือกเทคโนโลยี แต่คือการวิเคราะห์ Trade-offs และสื่อสารการตัดสินใจเหล่านั้นได้อย่างมีเหตุผล การฝึกฝนการมองปัญหาในมุมของความขัดแย้งเชิงคุณลักษณะ และการสร้างวินัยในการบันทึกการตัดสินใจผ่าน ADRs คือทักษะที่จะทำให้คุณเติบโตจากการเป็นเพียงผู้เขียนโค้ด ไปสู่การเป็นผู้นำทางเทคนิคที่สามารถสร้างระบบที่ยั่งยืนและประสบความสำเร็จได้ในระยะยาว
+
+---
+
+นี่คือเนื้อหาฉบับขยายความสำหรับส่วนที่ 2 ของการบรรยายในสัปดาห์ที่ 5 ครับ หากท่านต้องการให้ผมดำเนินการในหัวข้อย่อยถัดไป โปรดแจ้งคำสั่งต่อไปได้เลยครับ
