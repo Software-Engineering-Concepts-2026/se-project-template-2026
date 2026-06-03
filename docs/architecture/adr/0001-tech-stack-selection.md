@@ -19,9 +19,3 @@ We will use RESTful APIs with JSON payloads as the primary mechanism for synchro
     *   We lose the benefits of strong typing across service boundaries that gRPC provides.
     *   We will need to implement our own mechanisms for features like service discovery and client-side load balancing.```
 
-**บทสรุปสำหรับนิสิต:**
-การเป็นสถาปนิกซอฟต์แวร์ไม่ใช่แค่การเลือกเทคโนโลยี แต่คือการวิเคราะห์ Trade-offs และสื่อสารการตัดสินใจเหล่านั้นได้อย่างมีเหตุผล การฝึกฝนการมองปัญหาในมุมของความขัดแย้งเชิงคุณลักษณะ และการสร้างวินัยในการบันทึกการตัดสินใจผ่าน ADRs คือทักษะที่จะทำให้คุณเติบโตจากการเป็นเพียงผู้เขียนโค้ด ไปสู่การเป็นผู้นำทางเทคนิคที่สามารถสร้างระบบที่ยั่งยืนและประสบความสำเร็จได้ในระยะยาว
-
----
-
-นี่คือเนื้อหาฉบับขยายความสำหรับส่วนที่ 2 ของการบรรยายในสัปดาห์ที่ 5 ครับ หากท่านต้องการให้ผมดำเนินการในหัวข้อย่อยถัดไป โปรดแจ้งคำสั่งต่อไปได้เลยครับ
