@@ -1,1 +1,24 @@
-...
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.venv/
+.supercharged/ # ชื่อ virtual env ที่ใช้ในแล็บ
+
+# Environment variables
+.env
+.env.*
+
+# IDE / OS specific
+.vscode/
+.idea/
+*.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
