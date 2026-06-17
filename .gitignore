@@ -1,24 +1,20 @@
+# Environments
+.env
+.env.local
+.env.development.local
+
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
+*.py[cod]
+*$py.class
 venv/
-*.venv/
-.supercharged/ # ชื่อ virtual env ที่ใช้ในแล็บ
+ENV/
 
-# Environment variables
-.env
-.env.*
-
-# IDE / OS specific
-.vscode/
-.idea/
-*.DS_Store
-
-# Build artifacts
+# Node.js
+node_modules/
+.next/
 dist/
-build/
-*.egg-info/
+
+# OS Header files
+.DS_Store
+Thumbs.db
